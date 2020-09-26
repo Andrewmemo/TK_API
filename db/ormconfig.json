@@ -5,7 +5,7 @@
   "username": "olmaudto",
   "password": "9MUCFrS5MYOBEIQSF6zYnZVF-7d7j-aZ",
   "database": "olmaudto",
-  "synchronize": true,
+  "synchronize": false,
   "logging": false,
   "entities": ["src/entity/**/*.ts"],
   "migrations": ["src/migration/**/*.ts"],
