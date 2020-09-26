@@ -1,0 +1,18 @@
+{
+  "type": "postgres",
+  "host": "dumbo.db.elephantsql.com",
+  "port": 5432,
+  "username": "olmaudto",
+  "password": "9MUCFrS5MYOBEIQSF6zYnZVF-7d7j-aZ",
+  "database": "olmaudto",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/entity/**/*.ts"],
+  "migrations": ["src/migration/**/*.ts"],
+  "subscribers": ["src/subscriber/**/*.ts"],
+  "cli": {
+    "entitiesDir": "src/entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
+}
