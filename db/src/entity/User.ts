@@ -1,13 +1,13 @@
-import { UsersRolesPrograms } from "./UsersRolesPrograms";
+import { UsersRolesPrograms } from './UsersRolesPrograms';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
   BaseEntity,
-} from "typeorm";
+} from 'typeorm';
 
-@Entity("users")
+@Entity('users')
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -18,6 +18,9 @@ export class User extends BaseEntity {
   @Column()
   last_name: string;
 
-  @OneToMany(() => UsersRolesPrograms, (urp) => urp.user)
+  @OneToMany(
+    () => UsersRolesPrograms,
+    urp => urp.user,
+  )
   fullConnection: UsersRolesPrograms[];
 }

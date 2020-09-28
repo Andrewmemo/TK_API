@@ -1,6 +1,6 @@
-import { Program } from "./Program";
-import { Role } from "./Role";
-import { User } from "./User";
+import { Program } from './Program';
+import { Role } from './Role';
+import { User } from './User';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -10,9 +10,9 @@ import {
   ManyToOne,
   JoinColumn,
   BaseEntity,
-} from "typeorm";
+} from 'typeorm';
 
-@Entity("users_entities")
+@Entity('users_entities')
 export class UsersRolesPrograms extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -26,15 +26,24 @@ export class UsersRolesPrograms extends BaseEntity {
   @PrimaryColumn()
   program_id: number;
 
-  @ManyToOne(() => User, (user) => user.fullConnection)
-  @JoinColumn({ name: "user_id" })
+  @ManyToOne(
+    () => User,
+    user => user.fullConnection,
+  )
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @ManyToOne(() => Role, (role) => role.fullConnection)
-  @JoinColumn({ name: "role_id" })
+  @ManyToOne(
+    () => Role,
+    role => role.fullConnection,
+  )
+  @JoinColumn({ name: 'role_id' })
   role: Role;
 
-  @ManyToOne(() => Program, (program) => program.fullConnection)
-  @JoinColumn({ name: "program_id" })
+  @ManyToOne(
+    () => Program,
+    program => program.fullConnection,
+  )
+  @JoinColumn({ name: 'program_id' })
   program: Program;
 }
