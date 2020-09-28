@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { InterweavingEntity } from 'src/interweavings/models/interweaving.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity('programs')
 export class ProgramEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,4 +14,10 @@ export class ProgramEntity {
 
   @Column({ type: 'json' })
   content: object;
+
+  @OneToMany(
+    () => InterweavingEntity,
+    urp => urp.program,
+  )
+  connection: InterweavingEntity[];
 }

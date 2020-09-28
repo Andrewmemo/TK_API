@@ -1,10 +1,17 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { InterweavingEntity } from 'src/interweavings/models/interweaving.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
-export class UserEntity {
+@Entity('roles')
+export class RoleEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
   name: string;
+
+  @OneToMany(
+    () => InterweavingEntity,
+    urp => urp.role,
+  )
+  connection: InterweavingEntity[];
 }

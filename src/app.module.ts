@@ -1,3 +1,5 @@
+import { RoleModule } from './roles/role.module';
+import { InterweavingModule } from './interweavings/interweaving.module';
 import { ProgramModule } from './proprams/program.module';
 import { UserModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,12 +12,14 @@ import { AppService } from './app.service';
     TypeOrmModule.forRoot({
       type: 'postgres',
       url:
-        'postgres://iidnvfrm:sxPpk05X9zRmMf4-mpsn4ue7_c-cV7gS@dumbo.db.elephantsql.com:5432/iidnvfrm',
+        'postgres://olmaudto:9MUCFrS5MYOBEIQSF6zYnZVF-7d7j-aZ@dumbo.db.elephantsql.com:5432/olmaudto',
       autoLoadEntities: true,
       synchronize: true,
     }),
     UserModule,
     ProgramModule,
+    InterweavingModule,
+    RoleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
