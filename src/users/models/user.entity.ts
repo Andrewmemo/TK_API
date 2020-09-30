@@ -1,7 +1,14 @@
 import { InterweavingEntity } from 'src/interweavings/models/interweaving.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
 
 @Entity('users')
+@Unique(['email'])
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -11,6 +18,12 @@ export class UserEntity {
 
   @Column()
   last_name: string;
+
+  @Column()
+  email: string;
+
+  @Column()
+  password: string;
 
   @OneToMany(
     () => InterweavingEntity,

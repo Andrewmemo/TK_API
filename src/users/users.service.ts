@@ -2,7 +2,8 @@ import { User } from './models/user.interface';
 import { UserEntity } from './models/user.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, Connection } from 'typeorm';
+import { Repository } from 'typeorm';
+import { Response, Request } from 'express';
 
 Injectable();
 export class UserService {
@@ -11,8 +12,8 @@ export class UserService {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  createUser(user: User): Promise<User> {
-    return this.userRepository.save(user);
+  findMe(request: Request, response: Response) {
+    return 'This will be a page about current user';
   }
 
   findOne(id: number): Promise<any> {

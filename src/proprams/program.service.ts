@@ -11,8 +11,8 @@ export class ProgramService {
     private readonly programRepositiry: Repository<ProgramEntity>,
   ) {}
 
-  createProgram(user: Program): Promise<Program> {
-    return this.programRepositiry.save(user);
+  createProgram(program: Program): Promise<Program> {
+    return this.programRepositiry.save(program);
   }
 
   findOne(id: number): Promise<any> {
@@ -27,7 +27,7 @@ export class ProgramService {
     return this.programRepositiry.delete(id);
   }
 
-  updateOne(id: number, user: Program): Promise<any> {
-    return this.programRepositiry.update(id, user);
+  updateOne(id: number, program: Program): Promise<any> {
+    return this.programRepositiry.update(id, program);
   }
 }

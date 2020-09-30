@@ -1,0 +1,4 @@
+{
+  "db": "postgres://olmaudto:9MUCFrS5MYOBEIQSF6zYnZVF-7d7j-aZ@dumbo.db.elephantsql.com:5432/olmaudto",
+  "jwt": "jwtPrivateKey"
+}

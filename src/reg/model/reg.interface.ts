@@ -1,7 +1,5 @@
-export interface User {
-  id?: number;
+export interface Reg {
   first_name: string;
   last_name: string;
   email: string;
-  password: string;
 }

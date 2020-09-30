@@ -7,7 +7,7 @@ export class RoleController {
   constructor(private roleService: RoleService) {}
 
   @Post()
-  create(@Body() program: Role): Promise<Role> {
-    return this.roleService.createRole(program);
+  create(@Body() role: Role): Promise<Role> {
+    return this.roleService.createRole(role);
   }
 }

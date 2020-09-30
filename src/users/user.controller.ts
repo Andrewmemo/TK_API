@@ -1,23 +1,25 @@
 import { User } from './models/user.interface';
 import { UserService } from './users.service';
+import { Response, Request } from 'express';
 
 import {
   Controller,
-  Post,
   Body,
   Get,
   Param,
   Delete,
   Put,
+  Req,
+  Res,
 } from '@nestjs/common';
 
 @Controller('users')
 export class UserController {
   constructor(private userService: UserService) {}
 
-  @Post()
-  create(@Body() user: User): Promise<User> {
-    return this.userService.createUser(user);
+  @Get('me')
+  findMe(@Req() request: Request, @Res() response: Response) {
+    return this.userService.findMe(request, response);
   }
 
   @Get(':id')
