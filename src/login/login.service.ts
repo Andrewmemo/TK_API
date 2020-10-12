@@ -27,10 +27,11 @@ export class LoginService {
 
     if (!validPassword) response.status(400).send('Invalid password');
 
-    const token = tokeSign(regUser.id);
+    const token = tokeSign(regUser);
 
     return response
-      .header('tk-login-token', token)
+      .header('x-tk-login-token', token)
+      .header('access-control-expose-headers', 'x-tk-login-token')
       .status(200)
       .send('You logged in');
   }

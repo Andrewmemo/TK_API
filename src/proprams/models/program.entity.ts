@@ -12,6 +12,12 @@ export class ProgramEntity {
   @Column()
   description: string;
 
+  @Column()
+  photo: string;
+
+  @Column()
+  date: string;
+
   @Column({ type: 'json' })
   content: object;
 

@@ -1,3 +1,5 @@
+import { RegController } from './reg/reg.controller';
+import { InterweavingController } from './interweavings/interweaving.controller';
 import { UserController } from './users/user.controller';
 import { ProtectedController } from './protected_test/protected.controller';
 import { ProtectedModule } from './protected_test/protected.module';
@@ -18,6 +20,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from 'middleware/login';
 const config = require('config');
+const cors = require('cors');
+const helmet = require('helmet');
 
 @Module({
   imports: [
@@ -40,10 +44,14 @@ const config = require('config');
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes(ProtectedController);
     consumer
-      .apply(LoggerMiddleware)
-      .exclude({ path: '/me', method: RequestMethod.GET })
-      .forRoutes(UserController);
+      .apply(cors(), helmet(), LoggerMiddleware)
+      .forRoutes(ProtectedController);
+    consumer.apply(cors(), helmet()).forRoutes('interweavings');
+    consumer.apply(cors(), helmet()).forRoutes('reg');
+    consumer.apply(cors(), helmet()).forRoutes('login');
+    consumer.apply(cors(), helmet()).forRoutes('users');
+    consumer.apply(cors(), helmet()).forRoutes('programs');
+    consumer.apply(cors(), helmet()).forRoutes('roles');
   }
 }

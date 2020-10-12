@@ -20,6 +20,9 @@ export class UserEntity {
   last_name: string;
 
   @Column()
+  photo: string;
+
+  @Column()
   email: string;
 
   @Column()

@@ -16,15 +16,20 @@ export class InterweavingService {
   }
 
   findOne(id: number): Promise<any> {
-    return this.interweavingRepository.findOne({ id });
+    return this.interweavingRepository.findOne({
+      where: { id },
+      relations: ['user', 'role', 'program'],
+    });
   }
 
   findAll(): Promise<Interweaving[]> {
-    return this.interweavingRepository.find();
+    return this.interweavingRepository.find({
+      relations: ['user', 'role', 'program'],
+    });
   }
 
   deleteOne(id: number): Promise<any> {
-    return this.interweavingRepository.delete(id);
+    return this.interweavingRepository.delete({ program_id: id });
   }
 
   updateOne(id: number, interweaving: Interweaving): Promise<any> {

@@ -4,6 +4,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Response, Request } from 'express';
+import { tokeSign } from 'src/login/tokenSign';
 
 Injectable();
 export class UserService {
@@ -28,7 +29,19 @@ export class UserService {
     return this.userRepository.delete(id);
   }
 
-  updateOne(id: number, user: User): Promise<any> {
-    return this.userRepository.update(id, user);
+  async updateOne(
+    request: Request,
+    response: Response,
+    id: number,
+    user: User,
+  ): Promise<any> {
+    this.userRepository.update(id, user);
+    const regUser = await this.userRepository.findOne({ email: user.email });
+    const token = tokeSign(regUser);
+    return response
+      .header('x-tk-login-token', token)
+      .header('access-control-expose-headers', 'x-tk-login-token')
+      .status(200)
+      .send('Updated successfully');
   }
 }
