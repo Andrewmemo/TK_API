@@ -37,7 +37,7 @@ export class UserService {
   ): Promise<any> {
     this.userRepository.update(id, user);
     const regUser = await this.userRepository.findOne({ email: user.email });
-    const token = tokeSign(regUser);
+    const token = await tokeSign(regUser);
     return response
       .header('x-tk-login-token', token)
       .header('access-control-expose-headers', 'x-tk-login-token')
